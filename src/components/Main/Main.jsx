@@ -1,4 +1,4 @@
-"use client";
+
 import React, { useContext, useEffect, useState } from "react";
 import Dashboard from "../Dashboard/Dashboard";
 import Context from "../contextApi/Context";
