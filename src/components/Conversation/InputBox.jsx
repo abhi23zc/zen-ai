@@ -1,4 +1,3 @@
-import chatApi from "../api/conversation.js";
 import { Send, SendHorizonalIcon } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import {
