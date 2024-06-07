@@ -1,9 +1,41 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactMarkDown from "react-markdown";
 import { SendHorizonalIcon } from "lucide-react";
-import codeGenerate from "../api/codeGenerate.js";
+
+import {
+  GoogleGenerativeAI,
+  HarmCategory,
+  HarmBlockThreshold,
+} from "@google/generative-ai";
 
 const Code = () => {
+  const apiKey = "AIzaSyA5jeP53OJMjTCvgfY7oj0bezc6Mc7fN7A";
+  const genAI = new GoogleGenerativeAI(apiKey);
+
+  const model = genAI.getGenerativeModel({
+    model: "gemini-1.5-flash",
+    systemInstruction:
+      "You are a code generator . Your name is Gen-Z and you must answer only in markdown code snippets. Use code comments for explanation",
+  });
+
+  const generationConfig = {
+    temperature: 1,
+    topP: 0.95,
+    topK: 64,
+    maxOutputTokens: 8192,
+    responseMimeType: "text/plain",
+  };
+
+  async function codeGenerate(input) {
+    const chatSession = model.startChat({
+      generationConfig,
+      history: [],
+    });
+
+    const result = await chatSession.sendMessage(input);
+    return result.response.text();
+  }
+
   const [message, setmessage] = useState("");
   const [loader, setloader] = useState(false);
   const [input, setinput] = useState("");
