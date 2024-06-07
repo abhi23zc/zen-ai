@@ -1,23 +1,9 @@
-"use client";
-// import imageApi from "@/api/imageGeneration";
-import React, { useEffect } from "react";
+import React from 'react'
 
 function Image() {
-  async function submit() {
-    // imageApi()
-    try {
-      const response = await fetch("/api/generate-image", {
-        method: "POST",
-      });
-      const data = await response.json();
-      // setMessage(data.message);
-      console.log(data)
-    } catch (error) {
-      setMessage("Error generating image");
-    }
-  }
-
-  return <div onClick={submit}>Image</div>;
+  return (
+    <div>Image</div>
+  )
 }
 
-export default Image;
+export default Image
