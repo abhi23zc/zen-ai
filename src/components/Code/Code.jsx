@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ReactMarkDown from "react-markdown";
 import { SendHorizonalIcon } from "lucide-react";
-import codeGenerate from "../../api/codeGenerate.js";
+import codeGenerate from "../api/codeGenerate.js";
 
 const Code = () => {
   const [message, setmessage] = useState("");
